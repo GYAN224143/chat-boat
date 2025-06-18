@@ -1,5 +1,5 @@
 // Mock API service
-export const apiLogin = async (email: string, password: string) => {
+export const apiLogin = async (email: string, _password: string) => {
   // In a real app, this would call your backend
   return new Promise<{ user: string; token: string }>((resolve) => {
     setTimeout(() => {
@@ -11,8 +11,8 @@ export const apiLogin = async (email: string, password: string) => {
   });
 };
 
-export const apiRegister = async (email: string, password: string) => {
-  return apiLogin(email, password);
+export const apiRegister = async (email: string, _password: string) => {
+  return apiLogin(email, _password);
 };
 
 export const sendMessage = async (message: string) => {
