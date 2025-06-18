@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000', // your Express server port
+        target: 'https://chatbot-adwance-server.netlify.app', // your Express server port
         changeOrigin: true,
         secure: false,
       },
