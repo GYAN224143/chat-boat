@@ -1,54 +1,54 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const useSpeechRecognition = () => {
-  const [isListening, setIsListening] = useState(false)
-  const [transcript, setTranscript] = useState('')
-  const [hasRecognitionSupport, setHasRecognitionSupport] = useState(false)
+  const [isListening, setIsListening] = useState(false);
+  const [transcript, setTranscript] = useState('');
+  const [hasRecognitionSupport, setHasRecognitionSupport] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && 'webkitSpeechRecognition' in window) {
-      setHasRecognitionSupport(true)
+      setHasRecognitionSupport(true);
     }
-  }, [])
+  }, []);
 
   const startListening = () => {
-    if (!hasRecognitionSupport) return
+    if (!hasRecognitionSupport) return;
 
-    setIsListening(true)
-    setTranscript('')
-    
+    setIsListening(true);
+    setTranscript('');
+
     // @ts-ignore - webkitSpeechRecognition is not in the TypeScript DOM types
-    const recognition = new window.webkitSpeechRecognition()
-    recognition.continuous = true
-    recognition.interimResults = true
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
 
     recognition.onresult = (event: any) => {
       const currentTranscript = Array.from(event.results)
         .map((result: any) => result[0])
         .map((result) => result.transcript)
-        .join('')
-      setTranscript(currentTranscript)
-    }
+        .join('');
+      setTranscript(currentTranscript);
+    };
 
     recognition.onerror = (event: any) => {
-      console.error('Speech recognition error', event.error)
-      setIsListening(false)
-    }
+      console.error('Speech recognition error', event.error);
+      setIsListening(false);
+    };
 
-    recognition.start()
-  }
+    recognition.start();
+  };
 
   const stopListening = () => {
-    setIsListening(false)
-  }
+    setIsListening(false);
+  };
 
   return {
     isListening,
     transcript,
     startListening,
     stopListening,
-    hasRecognitionSupport
-  }
-}
+    hasRecognitionSupport,
+  };
+};
 
-export default useSpeechRecognition
+export default useSpeechRecognition;

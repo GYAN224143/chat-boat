@@ -1,19 +1,21 @@
 interface PromptTemplatesProps {
-  onSelect: (template: string) => void
+  onSelect: (template: string) => void;
 }
 
 const templates = [
-  "Tell me a joke",
+  'Tell me a joke',
   "What's the weather like today?",
-  "Explain quantum computing in simple terms",
-  "Give me a recipe for chocolate chip cookies",
-  "What are the latest tech news?"
-]
+  'Explain quantum computing in simple terms',
+  'Give me a recipe for chocolate chip cookies',
+  'What are the latest tech news?',
+];
 
 const PromptTemplates = ({ onSelect }: PromptTemplatesProps) => {
   return (
     <div className="mt-6">
-      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Try these prompts:</h3>
+      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+        Try these prompts:
+      </h3>
       <div className="flex flex-wrap gap-2 justify-center">
         {templates.map((template, index) => (
           <button
@@ -26,7 +28,7 @@ const PromptTemplates = ({ onSelect }: PromptTemplatesProps) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PromptTemplates
+export default PromptTemplates;
