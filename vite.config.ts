@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://chatbot-adwance-server.netlify.app', // your Express server port
+        target: 'https://chatboat-server-geec.onrender.com', // your Express server port
         changeOrigin: true,
         secure: false,
       },
